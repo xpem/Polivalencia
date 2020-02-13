@@ -1,0 +1,43 @@
+﻿/*dll do my sql é externa, precisa ser importada para o projeto.*/
+
+
+create database dbfuncionarios;
+use dbfuncionarios;
+
+/*drop table Funcionario
+drop table PostoTrabalho
+drop table Habilitacao*/
+create table Funcionario(
+id int auto_increment primary key,
+nome varchar(150) not null,
+dtnascimento datetime,
+cidade varchar(100),
+telefone varchar(20)
+);
+
+create table PostoTrabalho(
+id int auto_increment primary key,
+nome varchar(150) not null,
+tipo int not null,
+descrição varchar(250)
+);
+
+create table Habilitacao(
+id int auto_increment primary key,
+datavalidade datetime not null,
+idfuncionario int unique not null,
+idpostotrabalho int,
+constraint fkhabilitacao_funcionario foreign key(idfuncionario) references Funcionario(id),
+constraint fkhabilitacao_postotrabalho foreign key(idpostotrabalho) references PostoTrabalho(id)
+);
+
+insert into Funcionario(nome,dtnascimento,cidade,telefone) values ('funcionario x','2020/01/01','cidade x','33984277514');
+insert into Funcionario(nome,dtnascimento,cidade,telefone) values ('funcionario y','2020/01/01','cidade x','33984277515');
+
+insert into PostoTrabalho(nome,tipo) value ('posto x',1);
+insert into PostoTrabalho(nome,tipo) value ('posto y',1);
+
+insert into Habilitacao(datavalidade,idfuncionario,idpostotrabalho)  values ('2020/01/01',1,1);
+
+
+

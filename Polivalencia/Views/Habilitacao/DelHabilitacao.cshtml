@@ -1,0 +1,63 @@
+﻿@model ModelLayer.Habilitacao
+
+@{
+    ViewBag.Title = "DelHabilitacao";
+}
+
+<h2>DelHabilitacao</h2>
+@if ((ViewData["Message"] != null))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewData["Message"]
+    </div>
+}
+else
+{
+    <h3>Deseja deletar esta habilitação?</h3>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NomeFunc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NomeFunc)
+            </dd>
+        </dl>
+        <h4>Habilitacao</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DtValidade)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DtValidade)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NomePostoTrab)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NomePostoTrab)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Excluir" class="btn btn-danger" />
+
+            </div>
+        }
+
+
+    </div>
+}
+@Html.ActionLink("Back to List", "ListaHabilitacao", new { idfunc = ViewData["IdFunc"] })

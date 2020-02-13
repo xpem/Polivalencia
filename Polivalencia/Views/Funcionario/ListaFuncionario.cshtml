@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ModelLayer.Funcionario>
+
+@{
+    ViewBag.Title = "ListaFuncionario";
+}
+
+<h2>ListaFuncionario</h2>
+<p>
+    @Html.ActionLink("Adicionar", "AddFuncionario","Funcionario",new { idfunc = 0 },new { @class = "btn btn-success btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.ActionLink("Habilitações", "ListaHabilitacao","Habilitacao", new { idfunc = item.Id }, new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("Editar", "AddFuncionario","Funcionario", new { idfunc = item.Id }, new { @class = "btn btn-warning btn-sm" })
+            @Html.ActionLink("Excluir","DelFuncionario","Funcionario", new { idfunc = item.Id }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+</table>
